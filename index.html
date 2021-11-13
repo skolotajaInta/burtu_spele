@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" \>
     <title>Spēle "Burtu jūklis"</title>
 </head>
 <body>
-    
+    <div class="laukums">
+        <div class="nosaukums"></div>
+        <div class="tuksums"></div>
+        <div class="noteikumi">
+            <p class="teksts">Spēles "Burtu jūklis" uzdevums ir 5 minūšu laikā atminēt pēc iespējas vairāk vārdu par izvēlēto tēmu.
+            Katra vārda burti tiks parādīti sajauktā secībā.
+            <br>Izvēlies tēmu un vari sākt!</p>
+            <p class="uzruna">VEIKSMI!</p>
+        </div>
+        <div class="izvelne">
+            <form>
+                <label>Tēmas izvēle:</label>
+                <select id="temas" name="temas" >
+                    <option value="0"></option>
+                    <option value="1">Latvijas pilsētas</option>
+                    <option value="2">Dzīvnieki</option>
+                    <option value="3">Priekšmeti</option>
+                </select>
+                <input type="button" value="Spēlēt" onclick="SPELET()">
+            </form>
+        </div>
+        <div class="autors">&copy; sk.Inta<br>Liepāja 2021</div>
+    </div>
 </body>
 </html>

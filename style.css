@@ -1,0 +1,78 @@
+body{
+    background-color: #e2e2c2;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 120%;
+    color: #663300;
+}
+.laukums{
+    background-image: url("atteli/burtujuklis.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    width: 810px;
+    height:610px;
+    margin: auto;
+}
+.nosaukums{
+    height:90px;
+    text-decoration: none;
+    margin: auto;
+}
+.tuksums{
+    height:50px;
+}
+.noteikumi{
+    background-color: #e2e2c2;
+    border: 2px solid #663300;
+    border-radius: 5px;
+    width: 720px;
+    height: 210px;
+    margin: auto;
+    line-height: 1.5;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.izvelne{
+    height: 120px;
+    margin: auto;
+    padding-top: 40px;
+    
+}
+.autors{
+    width: 760px;
+    text-align: right;
+    margin: auto;
+}
+.teksts{
+    text-align: justify;
+}
+.uzruna{
+    font-weight: bold;
+}
+label{
+    font-weight: bold; 
+}
+input{
+    border: 2px solid #663300;
+    background-color: #ddbb7b;
+    color: #663300;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 120%;
+    width: 120px;
+}
+select{
+    font-size: 120%;
+    color: #663300;
+    border-radius: 6px;
+    border: 2px solid #663300;
+}
+.tops{
+    height: 430px;
+    margin: auto;
+}
+.spele{
+    height: 450px;
+    margin: auto;
+}
