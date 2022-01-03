@@ -1,10 +1,9 @@
-var temas = ["", "Latvijas pilsētas", "Latvijas novadi un valstspilsētas", "Dzīvnieki", "Priekšmeti"];
-var izveleta_tema=0;
-var n;
-var sk=1;
-var atlikusaisLaiks="3:00";
-var jauktiDati = [];
-var sajauktiDati = [];
+let temas = ["", "Latvijas pilsētas", "Latvijas novadi un valstspilsētas", "Dzīvnieki", "Priekšmeti"];
+let izveleta_tema=0;
+let sk=0;
+let atlikusaisLaiks="3:00";
+let jauktiDati = [];        //vārdi sajauktā secībā
+let sajauktiDati = [];      //vārdu burti sajauktā secībā
 
 function IELADE_IZVELNI(){ 
     //tēmas vēlāk gribēšu no datu bāzes
@@ -41,7 +40,7 @@ function SPELES_IELADE(){
                 "Olaines novads", "Preiļu novads", "Rēzeknes novads", "Ropažu novads",	"Salaspils novads",	
                 "Saldus novads", "Saulkrastu novads", "Siguldas novads", "Smiltenes novads", "Talsu novads",	
                 "Tukuma novads", "Valkas novads", "Valmieras novads", "Varakļānu novads", "Ventspils novads"];
-    n = dati.length;
+    let n = dati.length;
     let q, x, y;
     let qn = n;
     for(let i=0; i<n; i++){
@@ -66,18 +65,16 @@ function SPELES_IELADE(){
     }
     //console.log(sajauktiDati);
     laiks.innerHTML = atlikusaisLaiks; 
-    nr.innerHTML = sk+". vārds";   
-	n = 0;
-	vards.innerHTML=sajauktiDati[n];						
+    nr.innerHTML = (sk+1)+". vārds";   
+	vards.innerHTML=sajauktiDati[sk].toUpperCase();						
 	vertejums.innerHTML="";									
 	document.getElementById("turpinat").style.visibility = "hidden"; 
 }
 
 function PARBAUDE(){
 	var v=document.getElementById("atbilde").value; //nolasa, ko ievadījis lietotājs
-    if(v.toUpperCase() == jauktiDati[n].toUpperCase()){    //bauda vai lietotāja ievadītais vārds sakrīt ar masīvā esošo
+    if(v.toUpperCase() == jauktiDati[sk].toUpperCase()){    //bauda vai lietotāja ievadītais vārds sakrīt ar masīvā esošo
 		atbilde.innerHTML="Pareizi!";    //parāda atbildi
-		sk=sk+1;			//gatavojoties nākošā vārda minēšanai minamā vārda kārtas numuru palielina par 1
 		vertejums.innerHTML="Pareizi! Tā turpināt!"; //parāda atbildi
         document.getElementById("turpinat").style.visibility = "visible"; //pogu TURPINĀT parāda
 		document.getElementById("parbaudit").style.visibility = "hidden"; //pogu PĀRABUDĪT paslēpj
@@ -88,8 +85,9 @@ function PARBAUDE(){
 }
 
 function TURPINAT(){
-	if(sk>5){ //ja 5 vārdi atminēti
-	    vertejums.innerHTML = "Lieliski, Tu atminēji visus vārdus!";  //parāda gala atbildi
+    sk=sk+1;  //gatavojoties nākošā vārda minēšanai minamā vārda kārtas numuru palielina par 1
+	if(sk==5){ //ja 5 vārdi atminēti
+	    vertejums.innerHTML = "Lieliski, Tu atminēji "+sk+" vārdus!";  //parāda gala atbildi
 		//paslēpj visus atlikušos formas elementus
 		document.getElementById("nr").style.visibility = "hidden";
 		document.getElementById("vards").style.visibility = "hidden";
@@ -97,9 +95,8 @@ function TURPINAT(){
 		document.getElementById("turpinat").style.visibility = "hidden"; 
 		
 	}else{ //ja 5 vārdi vēl nav atminēti
-		nr.innerHTML = sk+" no 5";         //maina vārdu skaitītāja ierakstu
-		n++;                               //maina vārdu numuru masīvā
-		vards.innerHTML = sajauktiDati[n];			 //parāda nejauši izvēlētu vārdu
+		nr.innerHTML = (sk+1)+". vārds";             //maina vārdu skaitītāja ierakstu
+		vards.innerHTML = sajauktiDati[sk].toUpperCase();	 //parāda nejauši izvēlētu vārdu
 		document.getElementById("turpinat").style.visibility = "hidden"; //pogu TURPINĀT paslēpj
 		document.getElementById("parbaudit").style.visibility = "visible"; //pogu PĀRABUDĪT parāda
 		document.getElementById("dzest").style.visibility = "visible"; //pogu DZĒST parāda
