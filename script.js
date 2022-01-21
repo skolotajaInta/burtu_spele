@@ -1,7 +1,8 @@
 let temas = ["", "Latvijas pilsētas", "Latvijas novadi un valstspilsētas", "Dzīvnieki", "Priekšmeti"];
 let izveleta_tema=0;
 let sk=0;
-let atlikusaisLaiks="3:00";
+let atlikusaisLaiks = 185;
+let laikaAtskaite;
 let jauktiDati = [];        //vārdi sajauktā secībā
 let sajauktiDati = [];      //vārdu burti sajauktā secībā
 
@@ -64,11 +65,13 @@ function SPELES_IELADE(){
         sajauktiDati.push(vertiba);
     }
     //console.log(sajauktiDati);
-    laiks.innerHTML = atlikusaisLaiks; 
+    //laiks.innerHTML = atlikusaisLaiks; 
+    LAIKS();
     nr.innerHTML = (sk+1)+". vārds";   
 	vards.innerHTML=sajauktiDati[sk].toUpperCase();						
 	vertejums.innerHTML="";									
 	document.getElementById("turpinat").style.visibility = "hidden"; 
+    laikaAtskaite = setInterval(TICK, 1000);
 }
 
 function PARBAUDE(){
@@ -108,4 +111,23 @@ function TURPINAT(){
 function DZEST(){
     document.getElementById("atbilde").value = "";  //dzēš ievadīto vārdu (teksta lauks)
 	vertejums.innerHTML = "";   //dzēš atbildes novērtējumu (iezīme - label)
+}
+
+function LAIKS(){
+    let min = Math.floor(atlikusaisLaiks / 60);
+	let sec = atlikusaisLaiks - (min * 60);
+    if (sec < 10) {
+		sec = "0" + sec;
+	}
+    laiks.innerHTML = min.toString() + ":" + sec;
+}
+
+function TICK(){
+	LAIKS();
+	if (atlikusaisLaiks === 0){
+		alert("Laiks beidzies!");
+		clearInterval(laikaAtskaite);
+		//Kā fiksēt beigas???
+	}
+	atlikusaisLaiks--;
 }
